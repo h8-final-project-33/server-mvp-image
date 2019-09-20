@@ -27,3 +27,5 @@ app.use('/images', routes)
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`)
 })
+
+module.exports = app
