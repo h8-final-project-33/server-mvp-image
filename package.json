@@ -1,0 +1,30 @@
+{
+  "name": "server-mvp-image",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h8-final-project-33/server-mvp-image.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/h8-final-project-33/server-mvp-image/issues"
+  },
+  "homepage": "https://github.com/h8-final-project-33/server-mvp-image#readme",
+  "dependencies": {
+    "@google-cloud/storage": "^3.2.1",
+    "@google-cloud/vision": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.1",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.2"
+  }
+}
