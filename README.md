@@ -14,6 +14,7 @@
     [
         {
             "image": "<Image URL>",
+            "description": "<Array>",
             "created_at": "<Date>",
             "updated_at": "<Date>",
             "__v": 0
@@ -34,6 +35,7 @@
     [
         {
             "image": "<Image URL>",
+            "description": "<Array>",
             "created_at": "<Date>",
             "updated_at": "<Date>",
             "__v": 0
@@ -57,6 +59,7 @@
     ```JS
     {
         "image": "...",
+        "description": "<Array>",
         "created_at": "<Date>",
         "updated_at": "<Date>",
         "__v": 0
