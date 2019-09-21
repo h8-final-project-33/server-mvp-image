@@ -7,10 +7,9 @@ const morgan        = require('morgan')
 const PORT          = process.env.PORT || 3001
 const routes        = require('./routes')
 const mongoose      = require('mongoose')
-// const DB            = process.env.DB_ATLAS
-const DB_LOCAL      = process.env.DB_LOCAL
+const db = `mongodb://mromiario:${process.env.MONGO_PASSWORD}@cluster0-shard-00-00-qjyss.mongodb.net:27017,cluster0-shard-00-01-qjyss.mongodb.net:27017,cluster0-shard-00-02-qjyss.mongodb.net:27017/${process.env.NODE_ENV == 'test'? 'testFinalProject' : 'finalProject'}?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority`
 
-mongoose.connect(DB_LOCAL, { useNewUrlParser : true, useUnifiedTopology: true })
+mongoose.connect(db, { useNewUrlParser : true, useUnifiedTopology: true })
 .then(() => {
     console.log(`Connect to mongoose database`)
 })
@@ -19,8 +18,8 @@ mongoose.connect(DB_LOCAL, { useNewUrlParser : true, useUnifiedTopology: true })
 })
 app.use(morgan('dev'))
 app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ limit: '50mb', extended: false }))
+app.use(express.json({ limit: '50mb' }))
 
 app.use('/images', routes)
 
