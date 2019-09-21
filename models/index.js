@@ -6,10 +6,10 @@ const ImageSchema = new Schema({
     description: [{
         type: String
     }],
-    // owner: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User'
-    // },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
 }, {
     timestamps: {
         createdAt: 'created_at',

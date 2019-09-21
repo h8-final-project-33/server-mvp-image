@@ -1,9 +1,9 @@
-const { getPublicUrl, sendUploadToGCS, multer } = require('./gcsImage.js')
+const { getPublicUrl, sendUploadToGCS, convertBs64 } = require('./gcsImage.js')
 const { quickstart }                            = require('./gvisionImage')
 
 module.exports = {
     getPublicUrl,
     sendUploadToGCS,
-    multer,
+    convertBs64,
     quickstart
 }
