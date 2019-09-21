@@ -31,11 +31,13 @@ class ImageController {
         .catch(next)
     }
 
-    static create (req, res, next) {
+    static async create (req, res, next) {
+        const data = await quickstart(req.file.cloudStoragePublicUrl)
         const obj = {
-            owner: req.authenticatedUser._id,
+            //owner: req.authenticatedUser._id,
             featured_image: req.file.cloudStoragePublicUrl,
-            description: quickstart(req.file.cloudStoragePublicUrl)
+            description: data
+
         }
         Image.create(obj)
         .then(newImage => {
@@ -44,10 +46,11 @@ class ImageController {
         .catch(next)
     }
 
-    static update (req, res, next) {
+    static async update (req, res, next) {
+        const data = await quickstart(req.file.cloudStoragePublicUrl)
         let featured_image = req.file.cloudStoragePublicUrl
         req.body.featured_image = featured_image
-        req.body.description = quickstart(featured_image)
+        req.body.description = data
         Image.updateOne({
             _id: req.params.id
         }, {

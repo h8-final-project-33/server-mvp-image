@@ -4,11 +4,13 @@ function quickstart(featured_image) {
     const vision = require('@google-cloud/vision')
     const client = new vision.ImageAnnotatorClient()
     
-    client.labelDetection(featured_image)
+    return client.labelDetection(featured_image)
     .then(([result]) => {
         const labels = result.labelAnnotations
+        console.log(labels);
         if (!labels) {
             console.log(`Nothing results`)
+            return null
         }
         else {
             let description = []
@@ -17,9 +19,6 @@ function quickstart(featured_image) {
             })
             return description
         }
-    })
-    .catch(err => {
-        console.log(err)
     })
 }
 
