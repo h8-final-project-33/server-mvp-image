@@ -16,7 +16,7 @@ function quickstart(featured_image) {
             console.log(`Nothing results`)
             return null
         }
-        else if (labels || coordinates) {
+        else if (labels || coordinates || labels && coordinates) {
             labels.forEach(label => {
                 obj.description.push(label.description)
             })
