@@ -6,6 +6,9 @@ const ImageSchema = new Schema({
     description: [{
         type: String
     }],
+    coordinate: [{
+        type: String
+    }],
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User'

@@ -37,8 +37,8 @@ class ImageController {
         const obj = {
             //owner: req.authenticatedUser._id,
             featured_image: req.file.cloudStoragePublicUrl,
-            description: data
-
+            description: data.description,
+            coordinate: data.coordinate
         }
         Image.create(obj)
         .then(newImage => {
@@ -51,7 +51,8 @@ class ImageController {
         const data = await quickstart(req.file.cloudStoragePublicUrl)
         let featured_image = req.file.cloudStoragePublicUrl
         req.body.featured_image = featured_image
-        req.body.description = data
+        req.body.description = data.description
+        req.body.coordinate = data.coordinate
         Image.updateOne({
             _id: req.params.id
         }, {
