@@ -7,8 +7,8 @@ function quickstart(featured_image) {
     return client.labelDetection(featured_image)
     .then(([result]) => {
         const obj = {
-            description =[],
-            coordinate =[]
+            description : [],
+            coordinate : []
         }
         const labels = result.labelAnnotations
         const coordinates = result.cropHintsAnnotation.cropHints
