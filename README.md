@@ -8,19 +8,47 @@
     - **GET**
 - Route
     - `/images`
+- Body
+    - limit: Number (Number of how many photos wanted)    
 - Response
     - `code: 200`
     ```JS
-    [
-        {
-            "image": "<Image URL>",
-            "description": "<Array>",
-            "created_at": "<Date>",
-            "updated_at": "<Date>",
+        [{
+            "description": [
+                {
+                    "name": "Building",
+                    "coordinates": [
+                        {
+                            "x": 0.009003288112580776,
+                            "y": 0.11136158555746078
+                        },
+                        {
+                            "x": 0.9957922101020813,
+                            "y": 0.11136158555746078
+                        },
+                        {
+                            "x": 0.9957922101020813,
+                            "y": 0.8152372241020203
+                        },
+                        {
+                            "x": 0.009003288112580776,
+                            "y": 0.8152372241020203
+                        }
+                    ]
+                }
+            ],
+            "label": [
+                "Building",
+                "Architecture",
+                "Landmark",
+            ],
+            "_id": "5d873448c8edd4bf61c91bb9",
+            "owner": "5d85a0d113c6a18483e0833c",
+            "featured_image": "https://storage.googleapis.com/nfs-ecommerce/upload/1569141815896",
+            "created_at": "2019-09-22T08:43:52.700Z",
+            "updated_at": "2019-09-22T08:43:52.700Z",
             "__v": 0
-        },
-        { "<Object Image>" }, ...
-    ]
+        }]
     ```
 
 ### Get One Image
@@ -50,41 +78,12 @@
 - Route
     - `/images`
 - Body
-    - FormData
-        - image: file
+    - image: String (base64)
 - Headers
     - `{ accesstoken: "<generated access token>"}`
 - Response
     `code: 201`
-    ```JS
-    {
-        "image": "...",
-        "description": "<Array>",
-        "created_at": "<Date>",
-        "updated_at": "<Date>",
-        "__v": 0
-    }
-    ```
-### Update Image
 
-- Method
-    - **PATCH**
-- Route
-    - `/images/:id`
-- Header
-    - `{ accesstoken: "<generated access token>"}`
-- Body
-    - FormData
-        - image: file
-- Response
-    - `code: 200`
-    ```JS
-    {
-        n: 1,
-        nModified: 1,
-        ok: 1
-    }
-    ```
 ### Delete Image
 
 - Method
@@ -93,18 +92,27 @@
     - `/images/:id`
 - Header
     - `{ accesstoken: "<generated access token>"}`
-- Body
-    - FormData
-        - image: file
+- Body: -
 - Response
     - `code: 200`
     ```JS
-    {
-        n: 1,
-        deletedCount: 1,
-        ok: 1
-    }
+        {
+            "message": "Image deleted"
+        }
     ```
+
+### Find My Image
+
+- Method
+    - **GET**
+- Route
+    - `/find/myImage`
+- Header
+    - `{ accesstoken: "<generated access token>"}`
+- Body: -
+- Response
+    - `code: 200`
+
 
 ---
 
