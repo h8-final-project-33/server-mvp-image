@@ -171,4 +171,4 @@ $ nodemon app.js
 
 ## Access point:
 
-http://localhost:3000
+http://localhost:3000 or http://35.247.145.241/
