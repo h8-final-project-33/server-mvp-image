@@ -37,7 +37,7 @@ class ImageController {
         const obj = {
             //owner: req.authenticatedUser._id,
             featured_image: req.file.cloudStoragePublicUrl,
-            description: data.description,
+            description: data,
             coordinate: data.coordinate
         }
         Image.create(obj)

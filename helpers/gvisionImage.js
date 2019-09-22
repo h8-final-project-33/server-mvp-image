@@ -4,27 +4,24 @@ function quickstart(featured_image) {
     const vision = require('@google-cloud/vision')
     const client = new vision.ImageAnnotatorClient()
 
-    return client.labelDetection(featured_image)
+    return client.objectLocalization(featured_image)
     .then(([result]) => {
-        const obj = {
-            description : [],
-            coordinate : []
-        }
-        const labels = result.labelAnnotations
-        const coordinates = result.cropHintsAnnotation.cropHints
-        if (!labels || !coordinates || !labels && !coordinates) {
-            console.log(`Nothing results`)
-            return null
-        }
-        else if (labels || coordinates || labels && coordinates) {
-            labels.forEach(label => {
-                obj.description.push(label.description)
+        let ObjectDetected = []
+        const objects = result.localizedObjectAnnotations
+        objects.forEach(object => {
+            let obj = {}
+            obj.name = object.name
+            console.log(obj.name);
+            obj.coordinates = []
+            const vertices = object.boundingPoly.normalizedVertices
+            vertices.forEach(v => {
+                obj.coordinates.push({x: v.x, y:v.y})
+                console.log(`x: ${v.x}, y:${v.y}`)
             })
-            coordinates.forEach(coord => {
-                obj.coordinate.push(coord.boundingPoly.vertices)
-            })
-            return obj
-        }
+            ObjectDetected.push(obj)
+            console.log(ObjectDetected);
+          });
+        return ObjectDetected
     })
 }
 

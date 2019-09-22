@@ -4,7 +4,7 @@ const { Schema } = mongoose
 const ImageSchema = new Schema({
     featured_image: String,
     description: [{
-        type: String
+        type: Object
     }],
     coordinate: [{
         type: String
