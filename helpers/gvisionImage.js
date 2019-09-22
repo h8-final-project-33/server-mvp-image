@@ -21,8 +21,26 @@ function quickstart(featured_image) {
             ObjectDetected.push(obj)
             console.log(ObjectDetected);
           });
+
         return ObjectDetected
     })
 }
 
-module.exports = { quickstart }
+
+function getLabel(featured_image) {
+    const vision = require('@google-cloud/vision')
+    const client = new vision.ImageAnnotatorClient()
+
+    return client.labelDetection(featured_image)
+    .then(([result]) => {
+        let arrLabel = []
+        const labels = result.labelAnnotations;
+        console.log('Labels:');
+        labels.forEach(label => {
+          arrLabel.push(label.description)
+        });
+        return arrLabel
+    })
+}
+
+module.exports = { quickstart, getLabel }

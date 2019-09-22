@@ -6,7 +6,7 @@ const ImageSchema = new Schema({
     description: [{
         type: Object
     }],
-    coordinate: [{
+    label: [{
         type: String
     }],
     owner: {
