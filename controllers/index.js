@@ -35,7 +35,7 @@ class ImageController {
         console.log('di contrrrr',req.file);
         const data = await quickstart(req.file.cloudStoragePublicUrl)
         const obj = {
-            //owner: req.authenticatedUser._id,
+            owner: req.body._id,
             featured_image: req.file.cloudStoragePublicUrl,
             description: data,
             coordinate: data.coordinate
