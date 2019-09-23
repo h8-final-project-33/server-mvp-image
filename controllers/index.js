@@ -60,6 +60,33 @@ class ImageController {
         .catch(next)
     }
 
+    static async update (req, res, next) {
+        const data = await quickstart(req.file.cloudStoragePublicUrl)
+        const getLabel = await getLabel(req.file.cloudStoragePublicUrl)
+        let featured_image = req.file.cloudStoragePublicUrl
+        req.body.featured_image = featured_image
+        req.body.description = data.description
+        req.body.coordinate = data.coordinate
+        Image.updateOne({
+            _id: req.params.id
+        }, {
+            $set: req.body
+        })
+        .then(result => {
+            if (result.n && result.ok) {
+                res.status(200).json({
+                    message: 'Image updated'
+                })
+            }
+            else {
+                next({
+                    code: 404,
+                    message: `Image not found`
+                })
+            }
+        })
+        .catch(next)
+    }
 
     static delete (req, res, next) {
         Image.deleteOne({
