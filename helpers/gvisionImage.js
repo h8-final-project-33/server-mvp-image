@@ -31,7 +31,6 @@ function getLabel(featured_image) {
     .then(([result]) => {
         let arrLabel = []
         const labels = result.labelAnnotations;
-        console.log('Labels:');
         labels.forEach((label,index) => {
           arrLabel[index]=(label.description)
         });
