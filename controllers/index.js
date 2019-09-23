@@ -32,7 +32,7 @@ class ImageController {
     }
 
     static async create (req, res, next) {
-        console.log('di contrrrr',req.file);
+        // console.log('di contrrrr',req.file);
         const data = await quickstart(req.file.cloudStoragePublicUrl)
         const obj = {
             //owner: req.authenticatedUser._id,
