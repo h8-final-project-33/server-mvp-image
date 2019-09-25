@@ -18,7 +18,9 @@ function quickstart(featured_image) {
                 obj.coordinates.push({x: v.x, y:v.y})
                 console.log(`x: ${v.x}, y:${v.y}`)
             })
-            ObjectDetected.push(obj)
+	    if (object.score > 0.6) {
+            	ObjectDetected.push(obj)
+	     }
             console.log(ObjectDetected);
           });
 
@@ -35,9 +37,11 @@ function getLabel(featured_image) {
     .then(([result]) => {
         let arrLabel = []
         const labels = result.labelAnnotations;
-        console.log('Labels:');
         labels.forEach(label => {
+	console.log(label.description, label.score)
+	if (label.score > 0.6){
           arrLabel.push(label.description)
+	}
         });
         return arrLabel
     })
